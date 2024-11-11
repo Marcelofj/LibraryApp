@@ -1,0 +1,40 @@
+{
+    "name": "marcelofj/library-app",
+    "description": "Just another PHP app",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Marcelofj\\LibraryApp\\": "src/"
+        }
+    },
+    "scripts": {
+        "run-dev": "php -S localhost:8080",
+        "init-db": "php src/Infra/Persistence/SQLite/DatabaseInitializer.php",
+        "delete-db": "php src/Infra/Persistence/SQLite/DatabaseDeleter.php",
+        "run-test": "./vendor/bin/pest"
+    },
+    "authors": [
+        {
+            "name": "Marcelo Francisco",
+            "email": "marcelofj@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^3.5",
+        "mockery/mockery": "^1.6",
+        "kint-php/kint": "^5.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "process-timeout": 0
+    },
+    "require": {
+        "php": "^8.3",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.7",
+        "php-di/php-di": "^7.0"
+    }
+}

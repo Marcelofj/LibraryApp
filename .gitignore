@@ -1,0 +1,8 @@
+# Ignore Composer vendor directory
+/vendor/
+
+# Ignore Composer lock file
+/composer.lock
+
+# Ignore VSCode settings and workspace files
+.vscode/
