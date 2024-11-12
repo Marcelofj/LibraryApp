@@ -13,6 +13,9 @@ use Marcelofj\LibraryApp\Infra\Persistence\SQLite\StudentRepositorySQLite;
 use Marcelofj\LibraryApp\Infra\Persistence\SQLite\TeacherRepositorySQLite;
 use Marcelofj\LibraryApp\Services\BookLoanService;
 use Marcelofj\LibraryApp\Application\BookLoanApplication;
+use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\BookLoanController;
+use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\BookLoanApplicationController;
+use Marcelofj\LibraryApp\Infra\Persistence\SQLite\BookLoanRepositorySQLite;
 
 /**
  * Setup the container and configure it before each test.
@@ -149,4 +152,56 @@ it('should resolve TeacherRepositorySQLite from container', function () {
     $teacherRepository = $this->container->get(TeacherRepositorySQLite::class);
 
     expect($teacherRepository)->toBeInstanceOf(TeacherRepositorySQLite::class);
+});
+
+/**
+ * Test that the BookLoanApplication can be resolved from the container.
+ *
+ * @test
+ * @return void
+ */
+it('should resolve BookLoanApplication from container', function () {
+    $bookLoanApplication = $this->container->get(BookLoanApplication::class);
+
+    expect($bookLoanApplication)->toBeInstanceOf(BookLoanApplication::class);
+    expect($bookLoanApplication)->not->toBeNull();
+});
+
+/**
+ * Test that the BookLoanController can be resolved from the container.
+ *
+ * @test
+ * @return void
+ */
+it('should resolve BookLoanController from container', function () {
+    $bookLoanController = $this->container->get(BookLoanController::class);
+
+    expect($bookLoanController)->toBeInstanceOf(BookLoanController::class);
+    expect($bookLoanController)->not->toBeNull();
+});
+
+/**
+ * Test that the BookLoanApplicationController can be resolved from the container.
+ *
+ * @test
+ * @return void
+ */
+it('should resolve BookLoanApplicationController from container', function () {
+    $bookLoanApplicationController = $this->container->get(BookLoanApplicationController::class);
+
+    expect($bookLoanApplicationController)->toBeInstanceOf(BookLoanApplicationController::class);
+    expect($bookLoanApplicationController)->not->toBeNull();
+});
+
+/**
+ * Test that the BookLoanRepositorySQLite can be resolved from the container.
+ *
+ * @test
+ * @return void
+ */
+it('should resolve BookLoanRepositorySQLite from container', function () {
+    $bookLoanRepository = $this->container->get(BookLoanRepositorySQLite::class);
+
+    expect($bookLoanRepository)->toBeInstanceOf(BookLoanRepositorySQLite::class);
+    expect($bookLoanRepository)->not->toBeNull();
 });

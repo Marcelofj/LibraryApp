@@ -7,6 +7,7 @@ use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\BookController;
 use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\StudentController;
 use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\TeacherController;
 use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\BookLoanController;
+use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\BookLoanApplicationController;
 
 /**
  * Router class
@@ -58,5 +59,9 @@ class Router
         $this->app->patch('/loans-status', [BookLoanController::class, 'updateLoanBookStatus']);
         $this->app->get('/loans-active', [BookLoanController::class, 'fetchActiveLoanBooks']);
         $this->app->delete('/loans/{id}', [BookLoanController::class, 'deleteBookLoan']);
+
+        // BookLoan Application Routes
+        $this->app->post('/loans-checkout', [BookLoanApplicationController::class, 'bookCheckout']);
+        $this->app->post('/loans-checkin', [BookLoanApplicationController::class, 'bookCheckin']);
     }
 }

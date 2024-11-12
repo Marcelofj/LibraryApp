@@ -15,6 +15,9 @@ use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\TeacherController;
 use Marcelofj\LibraryApp\Infra\Persistence\SQLite\BookLoanRepositorySQLite;
 use Marcelofj\LibraryApp\Services\BookLoanService;
 use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\BookLoanController;
+use Marcelofj\LibraryApp\Infra\Framework\Http\Controller\BookLoanApplicationController;
+use Marcelofj\LibraryApp\Application\BookLoanApplication;
+use Marcelofj\LibraryApp\Application\UserApplicationFactory;
 
 /**
  * ContainerConfig class
@@ -70,6 +73,17 @@ class ContainerConfig
             return new BookLoanService($container->get(BookLoanRepositorySQLite::class));
         });
 
+        // Application
+        $container->set(BookLoanApplication::class, function ($container) {
+            return new BookLoanApplication(
+                $container->get(BookRepositorySQLite::class),
+                $container->get(TeacherRepositorySQLite::class),
+                $container->get(StudentRepositorySQLite::class),
+                $container->get(BookLoanRepositorySQLite::class),
+                $container->get(UserApplicationFactory::class)
+            );
+        });
+
         // Controllers
         $container->set(BookController::class, function ($container) {
             return new BookController($container->get(BookService::class));
@@ -85,6 +99,10 @@ class ContainerConfig
 
         $container->set(BookLoanController::class, function ($container) {
             return new BookLoanController($container->get(BookLoanService::class));
+        });
+
+        $container->set(BookLoanApplicationController::class, function ($container) {
+            return new BookLoanApplicationController($container->get(BookLoanApplication::class));
         });
     }
 }
