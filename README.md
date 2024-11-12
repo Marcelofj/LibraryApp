@@ -54,6 +54,12 @@ composer run-test
 
 ## API 
 
+1. To run API, execute:
+
+ ```console
+composer run-dev
+ ```
+
 Endpoints
 
 | Method | Endpoint        | Description                    |
