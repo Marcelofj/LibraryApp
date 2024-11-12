@@ -24,7 +24,7 @@ LibraryApp is a web application for managing library book loans. This project pr
 1. Clone the repository:
 
  ```console
- git clone https://github.com/username/LibraryApp.git
+ https://github.com/Marcelofj/LibraryApp.git
  cd LibraryApp
  ```
 
